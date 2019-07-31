@@ -1,3 +1,3 @@
-import View from './Views';
+import TodoItemList from './todoItemList';
 
-export {View};
+export default TodoItemList;
