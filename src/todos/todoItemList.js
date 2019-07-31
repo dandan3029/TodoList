@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './todoItem';
 import AddTodoItem from './addTodoItem';
+import Filter from './filter';
 
 class TodoItemList extends React.Component {
     constructor(props) {
@@ -87,6 +88,7 @@ class TodoItemList extends React.Component {
                     )}
                     <li>{this.state.finished} COMPLETED / {this.state.todoItemsList.length} ALL</li>
                 </ul>
+                <Filter />
             </div>
         )
     }
