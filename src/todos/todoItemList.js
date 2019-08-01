@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TodoItem from './todoItem';
 import AddTodoItem from './addTodoItem';
 import Filter from './filter';
@@ -9,21 +8,21 @@ class TodoItemList extends React.Component {
         super(props);
         this.state = {
             todoItemsList: [
-                {
-                    id: 0,
-                    text: 'read book',
-                    status: 0,
-                },
-                {
-                    id: 1,
-                    text: 'listen music',
-                    status: 0,
-                },
-                {
-                    id: 2,
-                    text: 'vocabularies',
-                    status: 0,
-                }
+                // {
+                //     id: 0,
+                //     text: 'read book',
+                //     status: 0,
+                // },
+                // {
+                //     id: 1,
+                //     text: 'listen music',
+                //     status: 0,
+                // },
+                // {
+                //     id: 2,
+                //     text: 'vocabularies',
+                //     status: 0,
+                // }
             ],
             finished: 0
         };
@@ -57,20 +56,25 @@ class TodoItemList extends React.Component {
 
     //更新任务总数，通过参数传递给子组件
     onDeleteTodoItem(todoItem){
-        var obj = [];
-        var sum = 0;
+        var tmpTodoItemsList = [];
+        var tmpFinished = 0;
         this.state.todoItemsList.forEach((item) => {
             if(item.id !== todoItem.id){
-                obj.push(item);
+                tmpTodoItemsList.push(item);
                 if(item.status === 1){
-                    sum ++;
+                    tmpFinished ++;
                 }
             }
         });
         this.setState({
-            todoItemsList: obj,
-            finished: sum
+            todoItemsList: tmpTodoItemsList,
+            finished: tmpFinished
         })
+    }
+
+    //在不同filter之间切换
+    onChangeFilter(){
+
     }
 
     render() {
@@ -79,6 +83,7 @@ class TodoItemList extends React.Component {
                 <h1>TodoList</h1>
                 <AddTodoItem addNewTodoItem={this.onAddTodoItem} todoListLength={this.state.todoItemsList.length}/>
                 <ul>
+                <li>{this.state.finished} COMPLETED / {this.state.todoItemsList.length} ALL</li>
                     {this.state.todoItemsList.map((item, index) =>
                         <TodoItem
                             item={item}
@@ -87,17 +92,11 @@ class TodoItemList extends React.Component {
                             key={index}
                         />
                     )}
-                    <li>{this.state.finished} COMPLETED / {this.state.todoItemsList.length} ALL</li>
                 </ul>
                 <Filter />
             </div>
         )
     }
-}
-
-TodoItemList.propTypes = {
-    todoItemsList: PropTypes.array.isRequired,
-    finished: PropTypes.number.isRequired,
 }
 
 export default TodoItemList;

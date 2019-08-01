@@ -8,14 +8,14 @@ class Link extends React.Component{
     render(){
         var isActive = this.props.isActive;
         if(isActive){
-            return <b className="filter selected">{this.children}</b>;
+            return <b className="filter selected">{this.props.children}</b>;
         } else {
             return (
                 <a href="#" className="filter not-selected" onClick={(ev) => {
                     ev.preventDefault();
                     //onClick();
                   }}>
-                    {this.children}
+                    {this.props.children}
                   </a>
             );
         }

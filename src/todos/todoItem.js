@@ -1,5 +1,4 @@
 import React from 'react';
-import { blockStatement } from '@babel/types';
 
 class TodoItem extends React.Component {
     constructor(props) {
