@@ -3,6 +3,11 @@ import React from 'react';
 class Link extends React.Component{
     constructor(props){
         super(props);
+        this.onclick = this.onclick.bind(this);
+    }
+
+    onclick(ev){
+        this.props.changeFilter(ev.target.innerHTML);
     }
 
     render(){
@@ -13,7 +18,7 @@ class Link extends React.Component{
             return (
                 <a href="#" className="filter not-selected" onClick={(ev) => {
                     ev.preventDefault();
-                    //onClick();
+                    this.onclick(ev);
                   }}>
                     {this.props.children}
                   </a>

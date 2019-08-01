@@ -1,4 +1,5 @@
 import React from 'react';
+import FilterType from '../constants';
 
 class AddTodoItem extends React.Component{
     constructor(props){
@@ -18,7 +19,7 @@ class AddTodoItem extends React.Component{
             var newItem = {
                 id: newTodoItemId,
                 text: newTodoItemText,
-                status: 0
+                status: FilterType.UNCOMPLETED,
             }
             this.refs.newTodoItemTextRef.value = '';
             this.props.addNewTodoItem(newItem);

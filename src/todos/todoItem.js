@@ -1,4 +1,5 @@
 import React from 'react';
+import FilterType from '../constants';
 
 class TodoItem extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class TodoItem extends React.Component {
 
     onCompleted() {
         var status = this.props.item.status;
-        status = (status === 0 ? 1 : 0);
+        status = (status === FilterType.COMPLETED ? FilterType.UNCOMPLETED : FilterType.COMPLETED);
         var obj = {
             id: this.props.item.id,
             text: this.props.item.text,
@@ -33,14 +34,14 @@ class TodoItem extends React.Component {
         const unCompleted = {
         }
 
-        const itemStyle = item.status === 1 ? completed : unCompleted;
+        const itemStyle = (item.status === FilterType.COMPLETED ? completed : unCompleted);
         return (
             <div>
                 <li key={item.id} style={itemStyle}>
                     <span
                         onClick={this.onCompleted}
                         id={item.id}
-                        style={{ backgroundColor: item.status === 0 ? '#fff' : '#A1EAFB' ,
+                        style={{ backgroundColor: item.status === FilterType.UNCOMPLETED ? '#fff' : '#A1EAFB' ,
                                  display: 'inline-block',
                                     width:'10px',
                                     height: '10px',

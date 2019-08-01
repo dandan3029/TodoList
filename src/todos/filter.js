@@ -7,13 +7,14 @@ class Filter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: FilterTypes.ALL
+            active: this.props.active
         }
-        this.onSetFilter = this.onSetFilter.bind(this);
+        this.onChangeFilter = this.onChangeFilter.bind(this);
     }
 
-    onSetFilter(filterTypes) {
-
+    onChangeFilter(filterType) {
+        this.setState({active:filterType});
+        this.props.onChangeFilter(filterType);
     }
 
     render() {
@@ -22,12 +23,15 @@ class Filter extends React.Component {
                 <p>
                     <Link   filter={FilterTypes.ALL} 
                             isActive={this.state.active === FilterTypes.ALL ? true : false}
+                            changeFilter={this.onChangeFilter}
                             >{FilterTypes.ALL}</Link>
                     <Link   filter={FilterTypes.COMPLETED}  
                             isActive={this.state.active === FilterTypes.COMPLETED ? true : false}
+                            changeFilter={this.onChangeFilter}
                             >{FilterTypes.COMPLETED}</Link>
                     <Link   filter={FilterTypes.UNCOMPLETED}
                             isActive={this.state.active === FilterTypes.UNCOMPLETED ? true : false}
+                            changeFilter={this.onChangeFilter}
                             >{FilterTypes.UNCOMPLETED}</Link>
                 </p>
             </div>
