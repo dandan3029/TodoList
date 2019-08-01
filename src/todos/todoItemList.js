@@ -45,7 +45,8 @@ class TodoItemList extends React.Component {
         var sum = 0;
         this.state.todoItemsList.forEach(item => {
             if (item.id === todoItem.id) {
-                item.status = 1;
+                //item.status = 1;
+                item.status = (item.status === 1 ? 0 : 1);
             }
             if (item.status === 1) {
                 sum++;

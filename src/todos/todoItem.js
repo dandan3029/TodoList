@@ -1,4 +1,5 @@
 import React from 'react';
+import { blockStatement } from '@babel/types';
 
 class TodoItem extends React.Component {
     constructor(props) {
@@ -31,7 +32,6 @@ class TodoItem extends React.Component {
         }
 
         const unCompleted = {
-            
         }
 
         const itemStyle = item.status === 1 ? completed : unCompleted;
@@ -41,7 +41,13 @@ class TodoItem extends React.Component {
                     <span
                         onClick={this.onCompleted}
                         id={item.id}
-                        style={{ backgroundColor: item.status === 0 ? '#fff' : '#A1EAFB' }}
+                        style={{ backgroundColor: item.status === 0 ? '#fff' : '#A1EAFB' ,
+                                 display: 'inline-block',
+                                    width:'10px',
+                                    height: '10px',
+                            border: '2px solid',
+                            margin:'0 5px 0'
+                        }}  
                     ></span>
                     <span>{item.text}</span>
                     <button onClick={this.onDeleted}>×</button>
